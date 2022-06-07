@@ -1,95 +1,66 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to the Vuetify 3 Beta
-        </h1>
-
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-5">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
+  <v-sheet>
+    <v-overlay v-model="show_map" contained content-class="bg-primary">
+      <v-container>
+        <v-row class="">
+          <v-col cols="10">
+            <v-card class="d-flex justify-center">
+              <v-img src="https://cdn.vuetifyjs.com/images/cards/forest-art.jpg"  height="500" width="500"></v-img>
+            </v-card>
+          </v-col>
+          <v-col cols="2">
+            <v-row align="center" justify="center">
+              <v-col cols="12" v-for="widget in widgets" :key="widget.title">
+                <v-card color="grey-lighten-3 d-flex flex-column">
+                  <v-card-title class="justify-center">{{ widget.title }}</v-card-title>
+                  <v-card-text class="text-center"><v-icon size="x-large">{{ widget.icon }}</v-icon></v-card-text>
+                  <v-card-text class="text-center">{{ widget.value }}</v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
         </v-row>
+      </v-container>
+    </v-overlay>
+
+
+    <v-row dense>
+      <v-col cols="auto">
+        <v-card color="primary" class="d-flex justify-center align-center rounded-0" height="100%" hover @click="show_map=!show_map">
+          <v-icon class="mx-2" size="x-large">mdi-map-marker</v-icon>
+        </v-card>
       </v-col>
+      <v-col cols="11">
+        <v-container>
+          <v-row class="my-10">
+            <v-col cols="12" class="text-center">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ducimus accusamus iste quasi, quo cumque placeat minus quaerat voluptatibus eaque quia veritatis soluta voluptatum dolor, non optio quibusdam quidem blanditiis?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ducimus accusamus iste quasi, quo cumque placeat minus quaerat voluptatibus eaque quia veritatis soluta voluptatum dolor, non optio quibusdam quidem blanditiis?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ducimus accusamus iste quasi, quo cumque placeat minus quaerat voluptatibus eaque quia veritatis soluta voluptatum dolor, non optio quibusdam quidem blanditiis?
+            </v-col>
+          </v-row>
+          <v-row align="center" justify="center">
+            <v-col cols="12" md="3" offset-md="1" v-for="widget in widgets" :key="widget.title">
+              <v-card color="grey-lighten-3 d-flex flex-column">
+                <v-card-title class="justify-center">{{ widget.title }}</v-card-title>
+                <v-card-text class="text-center"><v-icon size="x-large">{{ widget.icon }}</v-icon></v-card-text>
+                <v-card-text class="text-center">{{ widget.value }}</v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-5">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-5">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
+          <v-row class="my-10">
+            <v-col cols="12" class="text-center">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ducimus accusamus iste quasi, quo cumque placeat minus quaerat voluptatibus eaque quia veritatis soluta voluptatum dolor, non optio quibusdam quidem blanditiis?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ducimus accusamus iste quasi, quo cumque placeat minus quaerat voluptatibus eaque quia veritatis soluta voluptatum dolor, non optio quibusdam quidem blanditiis?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ducimus accusamus iste quasi, quo cumque placeat minus quaerat voluptatibus eaque quia veritatis soluta voluptatum dolor, non optio quibusdam quidem blanditiis?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ducimus accusamus iste quasi, quo cumque placeat minus quaerat voluptatibus eaque quia veritatis soluta voluptatum dolor, non optio quibusdam quidem blanditiis?
+            </v-col>
+          </v-row>
+        </v-container>
       </v-col>
     </v-row>
-  </v-container>
+  </v-sheet>
 </template>
 
 <script>
@@ -98,52 +69,44 @@ export default {
   name: 'HelloWorld',
 
   data: () => ({
-    ecosystem: [
+    widgets: [
       {
-        text: 'vuetify-loader',
-        href: 'https://github.com/vuetifyjs/vuetify-loader',
+        title: "Name",
+        value: "Soil Sensor Brugge",
+        icon: 'mdi-ab-testing'
       },
       {
-        text: 'github',
-        href: 'https://github.com/vuetifyjs/vuetify',
+        title: "Moisture @ -12cm",
+        value: "33%",
+        icon: 'mdi-water-circle'
       },
       {
-        text: 'awesome-vuetify',
-        href: 'https://github.com/vuetifyjs/awesome-vuetify',
-      },
-    ],
-    importantLinks: [
-      {
-        text: 'Chat',
-        href: 'https://community.vuetifyjs.com',
+        title: "Moisture @ -4cm",
+        value: "12%",
+        icon: 'mdi-water-circle'
       },
       {
-        text: 'Made with Vuetify',
-        href: 'https://madewithvuejs.com/vuetify',
+        title: "Moisture @ ground",
+        value: "14%",
+        icon: 'mdi-water-circle'
       },
       {
-        text: 'Twitter',
-        href: 'https://twitter.com/vuetifyjs',
+        title: "Temperature",
+        value: "14°C",
+        icon: 'mdi-thermometer'
       },
       {
-        text: 'Articles',
-        href: 'https://medium.com/vuetify',
-      },
-    ],
-    whatsNext: [
-      {
-        text: 'Explore components',
-        href: 'https://vuetifyjs.com',
+        title: "Location",
+        value: "Spoorwegstraat 12 - Bruges",
+        icon: 'mdi-location'
       },
       {
-        text: 'Roadmap',
-        href: 'https://vuetifyjs.com/introduction/roadmap/',
-      },
-      {
-        text: 'Frequently Asked Questions',
-        href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+        title: "Last Data",
+        value: "12 seconds ago",
+        icon: 'mdi-signal-variant'
       },
     ],
+    show_map: true
   }),
 }
 </script>
